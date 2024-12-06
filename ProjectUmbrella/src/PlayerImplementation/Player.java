@@ -9,61 +9,59 @@ public class Player {
     private Board board;
     private ScoreBoard scoreBoard;
     private int scores;
-    private HashMap<String, Integer> bottom;
-    private int[][] patterns = new int[5][2];  // Leaving patterns as is, not needed right now.
+    private static MiddleBoard middleBoard = new MiddleBoard(); // Shared among all players
+    private BottomBoard bottomBoard; // Unique to each player
+    private SideBoard leftBoard;     // Unique to each player
+    private SideBoard rightBoard;    // Unique to each player
 
-    // Constructor to initialize the player with basic information
-    public Player(String name, int id, Board board, ScoreBoard scoreBoard) {
+    // Constructor
+    public Player(String name, int id, Board board, ScoreBoard scoreBoard, SideBoard leftBoard, SideBoard rightBoard) {
         this.name = name;
         this.id = id;
         this.board = board;
         this.scoreBoard = scoreBoard;
-        this.scores = 0;  // Initial score is 0
-        this.bottom = new HashMap<>();  // Initializing the HashMap for bottom
+        this.scores = 0; // Initial score is 0
+        this.bottomBoard = new BottomBoard(); // Each player gets their own BottomBoard
+        this.leftBoard = leftBoard;
+        this.rightBoard = rightBoard;
     }
 
-    // Getter and setter methods for the player class
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public Board getBoard() { return board; }
-    public void setBoard(Board board) { this.board = board; }
-    public ScoreBoard getScoreBoard() { return scoreBoard; }
-    public void setScoreBoard(ScoreBoard scoreBoard) { this.scoreBoard = scoreBoard; }
-    public int getScores() { return scores; }
-    public void setScores(int scores) { this.scores = scores; }
-    public HashMap<String, Integer> getBottom() { return bottom; }
-    public void setBottom(HashMap<String, Integer> bottom) { this.bottom = bottom; }
-
-    // Method to display all the info of the player
     public void displayPlayerInfo() {
         System.out.println("Player Info:");
         System.out.println("Name: " + name);
         System.out.println("ID: " + id);
         System.out.println("Scores: " + scores);
 
-        if (board != null) {
-            board.printBoard();
-        } else {
-            System.out.println("Board: No board assigned.");
-        }
+        // Display board and scoreboard information
+        System.out.println("Board: " + board); // Assuming Board has a toString implementation
+        System.out.println("ScoreBoard: " + scoreBoard);
 
-        if (scoreBoard != null) {
-            scoreBoard.printScoreBoard();
-        } else {
-            System.out.println("ScoreBoard: No scoreboard assigned.");
-        }
-        
-        // Print the size of each permutation in the scoreboard
-        printScoreBoardSize();
+        // Display individual boards
+        System.out.println("Bottom Board: " + bottomBoard.getColorCount());
+        System.out.println("Left Board: " + leftBoard.getColorCount());
+        System.out.println("Right Board: " + rightBoard.getColorCount());
+
+        // Display shared MiddleBoard
+        System.out.println("Middle Board: " + middleBoard.getColorCount());
     }
-    
-    // Method to print the size of each permutation in the scoreboard
-    public void printScoreBoardSize() {
-        System.out.println("\nSizes of each permutation in the scoreboard:");
-        for (int size : scoreBoard.getPermutationSizes()) {
-            System.out.println(size);
-        }
+
+    // Getter for MiddleBoard
+    public static MiddleBoard getMiddleBoard() {
+        return middleBoard;
+    }
+
+    // Getter for BottomBoard
+    public BottomBoard getBottomBoard() {
+        return bottomBoard;
+    }
+
+    // Getter for LeftBoard
+    public SideBoard getLeftBoard() {
+        return leftBoard;
+    }
+
+    // Getter for RightBoard
+    public SideBoard getRightBoard() {
+        return rightBoard;
     }
 }

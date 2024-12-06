@@ -1,32 +1,35 @@
 package GameImplementation;
 
-import PlayerImplementation.Generator;
-import PlayerImplementation.Player;
-import PlayerImplementation.ScoreBoard;
-import BoardImplementation.Board;
-import BoardImplementation.BoardStyle;
+import PlayerImplementation.*;
+import BoardImplementation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<Player> players;
-    private Generator generator; // Generator to create random ScoreBoards
+    protected static List<Player> players;
+    private Generator generator;
 
     public Game() {
-        // Initialize the players list and the generator
+        // Initialize players and generator
         players = new ArrayList<>();
         generator = new Generator();
 
-        // Manually define the 4 different Board styles
-        Board board1 = new Board(BoardStyle.STYLE1);  // Using STYLE1 from BoardStyle
-        Board board2 = new Board(BoardStyle.STYLE2);  // Using STYLE2 from BoardStyle
-        Board board3 = new Board(BoardStyle.STYLE3);  // Using STYLE3 from BoardStyle
-        Board board4 = new Board(BoardStyle.STYLE4);  // Using STYLE4 from BoardStyle
+        // Initialize the 4 different Board styles
+        Board board1 = new Board(BoardStyle.STYLE1);
+        Board board2 = new Board(BoardStyle.STYLE2);
+        Board board3 = new Board(BoardStyle.STYLE3);
+        Board board4 = new Board(BoardStyle.STYLE4);
 
-        // Add players with different boards and scoreboards
+        // Initialize 4 SideBoards for the circular seating arrangement
+        SideBoard[] sideBoards = new SideBoard[4];
         for (int i = 0; i < 4; i++) {
-            // Assign each player a unique board style
+            sideBoards[i] = new SideBoard();
+        }
+
+        // Create and assign players
+        for (int i = 0; i < 4; i++) {
+            // Assign board style
             Board board = null;
             switch (i) {
                 case 0:
@@ -43,16 +46,20 @@ public class Game {
                     break;
             }
 
-            // Using the generator to create the ScoreBoard
+            // Assign side boards with circular logic
+            SideBoard leftBoard = sideBoards[i];
+            SideBoard rightBoard = sideBoards[(i + 1) % 4];
+
+            // Generate a scoreboard for the player
             ScoreBoard scoreBoard = new ScoreBoard(generator.generateRandomPermutationsArray());
 
-            // Create the player with the board and scoreBoard
-            Player player = new Player("Player " + (i + 1), i + 1, board, scoreBoard);
+            // Create player and add to the list
+            Player player = new Player("Player " + (i + 1), i + 1, board, scoreBoard, leftBoard, rightBoard);
             players.add(player);
         }
     }
 
-    // Method to display information of all players
+    // Display all players' information
     public void displayAllPlayersInfo() {
         for (Player player : players) {
             player.displayPlayerInfo();
@@ -60,10 +67,10 @@ public class Game {
         }
     }
 
-    // Method to start the game (for now, just display info)
+    // Start the game
     public void startGame() {
         System.out.println("Game Started!\n");
-        displayAllPlayersInfo(); // Display information of all players
+        displayAllPlayersInfo();
     }
 
     public List<Player> getPlayers() {
