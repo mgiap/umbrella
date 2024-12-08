@@ -44,7 +44,12 @@ public class Player {
         // Display shared MiddleBoard
         System.out.println("Middle Board: " + middleBoard.getColorCount());
     }
-
+    
+    // Getter for MainBoard
+    public Board getBoard() {
+        return board;
+    }
+    
     // Getter for MiddleBoard
     public static MiddleBoard getMiddleBoard() {
         return middleBoard;
@@ -63,5 +68,20 @@ public class Player {
     // Getter for RightBoard
     public SideBoard getRightBoard() {
         return rightBoard;
+    }
+    
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+    
+    // Getter for scores
+    public int getScores() {
+        return scores;
+    }
+    
+    // Getter for scoreBoard
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
     }
 }

@@ -5,7 +5,8 @@ import java.util.List;
 public class ScoreBoard {
     private List<List<String>> permutations;  // Store the generated permutations
 
-    public ScoreBoard(List<List<String>> permutations) {
+    public ScoreBoard() {
+    	List<List<String>> permutations = Generator.generateRandomPermutationsArray();
         this.permutations = permutations;
     }
 
@@ -25,3 +26,6 @@ public class ScoreBoard {
         return Generator.getPermutationSizes(permutations);
     }
 }
+
+
+

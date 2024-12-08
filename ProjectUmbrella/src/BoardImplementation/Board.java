@@ -1,12 +1,7 @@
 package BoardImplementation;
 
-import java.util.HashMap;
-
-import PlayerImplementation.ScoreBoard;
-
 public class Board {
 	
-	private ScoreBoard scoreBoard;
 	private String[][] board;
 	
 
@@ -22,4 +17,8 @@ public class Board {
             System.out.println();
         }
     }
+
+	public String[][] getBoard() {
+		return board;
+	}
 }

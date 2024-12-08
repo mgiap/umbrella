@@ -51,7 +51,7 @@ public class Game {
             SideBoard rightBoard = sideBoards[(i + 1) % 4];
 
             // Generate a scoreboard for the player
-            ScoreBoard scoreBoard = new ScoreBoard(generator.generateRandomPermutationsArray());
+            ScoreBoard scoreBoard = new ScoreBoard();
 
             // Create player and add to the list
             Player player = new Player("Player " + (i + 1), i + 1, board, scoreBoard, leftBoard, rightBoard);
