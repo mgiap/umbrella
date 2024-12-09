@@ -15,11 +15,11 @@ public class Player {
     private SideBoard rightBoard;    // Unique to each player
 
     // Constructor
-    public Player(String name, int id, Board board, ScoreBoard scoreBoard, SideBoard leftBoard, SideBoard rightBoard) {
+    public Player(String name, int id, Board board, SideBoard leftBoard, SideBoard rightBoard) {
         this.name = name;
         this.id = id;
         this.board = board;
-        this.scoreBoard = scoreBoard;
+        this.scoreBoard = new ScoreBoard();
         this.scores = 0; // Initial score is 0
         this.bottomBoard = new BottomBoard(); // Each player gets their own BottomBoard
         this.leftBoard = leftBoard;
