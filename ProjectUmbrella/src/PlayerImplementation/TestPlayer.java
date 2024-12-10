@@ -14,3 +14,5 @@ public class TestPlayer {
         Player player1 = new Player("Player 1", 1, new Board(BoardStyle.STYLE1), board1, board2);
     }
 }
+
+
