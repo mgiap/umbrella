@@ -12,6 +12,7 @@ public class TestPlayer {
 
         // Create a player with the boards and the scoreboard
         Player player1 = new Player("Player 1", 1, new Board(BoardStyle.STYLE1), board1, board2);
+        player1.getPatternQuery().displayAllPatterns();
     }
 }
 
