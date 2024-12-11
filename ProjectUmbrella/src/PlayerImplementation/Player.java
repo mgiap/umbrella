@@ -13,6 +13,7 @@ public class Player {
     private BottomBoard bottomBoard; // Unique to each player
     private SideBoard leftBoard;     // Unique to each player
     private SideBoard rightBoard;    // Unique to each player
+    private PatternQuery patternQuery;
 
     // Constructor
     public Player(String name, int id, Board board, SideBoard leftBoard, SideBoard rightBoard) {
@@ -24,6 +25,7 @@ public class Player {
         this.bottomBoard = new BottomBoard(); // Each player gets their own BottomBoard
         this.leftBoard = leftBoard;
         this.rightBoard = rightBoard;
+        this.patternQuery = new PatternQuery();
     }
 
     public void displayPlayerInfo() {
