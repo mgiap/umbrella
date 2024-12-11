@@ -15,7 +15,18 @@ public class PatternQuery {
         for (int i = 0; i < SLOT_COUNT; i++) {
             patternSlots[i] = new ArrayList<>();
         }
+        Pattern pattern1 = new Pattern(PatternGenerator.generateNewPattern());
+        Pattern pattern2 = new Pattern(PatternGenerator.generateNewPattern());
+        Pattern pattern3 = new Pattern(PatternGenerator.generateNewPattern());
+        Pattern pattern4 = new Pattern(PatternGenerator.generateNewPattern());
+        Pattern pattern12 = new Pattern(PatternGenerator.generateNewPattern());
+        this.addPattern(0, pattern1);
+        this.addPattern(0, pattern12);
+        this.addPattern(1, pattern2.rotatePattern());
+        this.addPattern(2, pattern3.rotatePattern().rotatePattern());
+        this.addPattern(3, pattern4.rotatePattern().rotatePattern().rotatePattern());   
     }
+
     
     // Add a pattern to a specific slot
     public void addPattern(int slotIndex, Pattern pattern) {
@@ -107,4 +118,6 @@ public class PatternQuery {
             }
         }
     }
+
+    
 } 
