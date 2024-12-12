@@ -2,8 +2,7 @@ package PlayerImplementation;
 
 import BoardImplementation.Board;
 import BoardImplementation.BoardStyle;
-import java.util.List;
-import java.util.Map;
+import java.util.HashMap;
 
 public class TestPatternQuery {
     public static void main(String[] args) {
@@ -12,10 +11,7 @@ public class TestPatternQuery {
 
     private static void testCheckPattern() {
         // Setup
-        Board board = new Board(BoardStyle.STYLE1); // Assuming STYLE1 is a valid board style
-        SideBoard leftBoard = new SideBoard();
-        SideBoard rightBoard = new SideBoard();
-        Player player = new Player("Test Player", 1, board, leftBoard, rightBoard);
+        Player player = new Player("Test Player", 1);
 
         // Assuming PatternQuery is correctly set up in the Player constructor
         // Manually add patterns to the PatternQuery for testing
@@ -29,10 +25,10 @@ public class TestPatternQuery {
         // {"B", "G", "Y", "R"}
         // Act
         player.displayPatternQuery();
-        Map<Integer, String> results = player.checkPattern();
+        HashMap<Integer, String> results = player.checkPattern();
 
         // Assert
-        for (Map.Entry<Integer, String> entry : results.entrySet()) {
+        for (HashMap.Entry<Integer, String> entry : results.entrySet()) {
             if ("R".equals(entry.getValue())) {
                 System.out.println("Test Passed: R color detected on slot " + entry.getKey());
             }

@@ -8,26 +8,6 @@ public class Generator {
 
     private static String[] colors = new String[]{"R", "Y", "G", "B"};
 
-    public static void main(String[] args) {
-        // Generate the array with 2 permutations of 2 colors and 2 permutations of 3 colors
-        List<List<String>> permutations = generateRandomPermutationsArray();
-
-        // Generate an array of sizes of the permutations
-        List<Integer> sizes = getPermutationSizes(permutations);
-
-//        // Print the generated shuffled permutations
-//        System.out.println("Generated Shuffled Permutations Array:");
-//        for (List<String> permutation : permutations) {
-//            System.out.println(permutation);
-//        }
-//
-//        // Print the sizes of each permutation
-//        System.out.println("\nSizes of each permutation:");
-//        for (int size : sizes) {
-//            System.out.println(size);
-//        }
-    }
-
     public static List<List<String>> generateRandomPermutationsArray() {
         List<List<String>> permutations = new ArrayList<>();
 

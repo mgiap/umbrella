@@ -10,7 +10,7 @@ public class ScoreBoard {
         this.permutations = permutations;
     }
 
-    public List<List<String>> getPermutations() {
+    public List<List<String>> getScoreBoard() {
         return permutations;
     }
 

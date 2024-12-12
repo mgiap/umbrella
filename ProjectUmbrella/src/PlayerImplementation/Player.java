@@ -1,7 +1,11 @@
 package PlayerImplementation;
 
 import BoardImplementation.Board;
+import BoardImplementation.BoardStyle;
+import GameImplementation.Game;
+
 import java.util.HashMap;
+import java.util.List;
 
 public class Player {
     private String name;
@@ -15,16 +19,15 @@ public class Player {
     private SideBoard rightBoard;    // Unique to each player
     private PatternQuery patternQuery;
 
-    // Constructor
-    public Player(String name, int id, Board board, SideBoard leftBoard, SideBoard rightBoard) {
+    public Player(String name, int id) {
         this.name = name;
         this.id = id;
-        this.board = board;
+        this.board = new Board(BoardStyle.style[id - 1]);
         this.scoreBoard = new ScoreBoard();
         this.scores = 0; // Initial score is 0
         this.bottomBoard = new BottomBoard(); // Each player gets their own BottomBoard
-        this.leftBoard = leftBoard;
-        this.rightBoard = rightBoard;
+        this.leftBoard = Game.getSideBoards()[id - 1];
+        this.rightBoard = Game.getSideBoards()[id % 4];
         this.patternQuery = new PatternQuery();
     }
 
@@ -199,8 +202,8 @@ public class Player {
         targetCounts.put(removedUmbrella, targetCounts.get(removedUmbrella) + 1);
     }
     // Check first pattern in all slot
-    public Map<Integer, String> checkPattern() {
-        Map<Integer, String> results = new HashMap<>();
+    public HashMap<Integer, String> checkPattern() {
+        HashMap<Integer, String> results = new HashMap<>();
         String[][] boardData = board.getBoard(); // Assuming boardData does not change per slot
 
         for (int slot = 0; slot < 4; slot++) {
@@ -218,5 +221,35 @@ public class Player {
             }
         }
         return results;
+    }
+
+    public void calculateScores() {
+    	for (int i = 0; i < 4; i++) {
+    		boolean finishAll = true; // Set flag to check if all the tokens of a slot are occupied
+    		List<String> tokens = this.scoreBoard.getScoreBoard().get(i);
+    		for (String token : tokens) {
+    			if (token.equals("T")) {
+    				scores++;
+    			}
+    			else {
+    				finishAll = false; // if there is at least one token not occupied
+    			}
+    		}
+    		
+    		if (finishAll) {
+    			if (tokens.size() == 3) {
+    				scores += 5;
+    			}
+    			else if (tokens.size() == 2) {
+    				scores += 3;
+    			}
+    		}
+    	}
+    	
+    	// Calculate the penalty for bottom board tokens
+        int bottomBoardCount = this.bottomBoard.getColorCount().values().stream().mapToInt(Integer::intValue).sum();
+    	
+        // Final scores = total scores - bottom remaining tokens
+    	scores -= bottomBoardCount;
     }
 }
