@@ -118,6 +118,10 @@ public class PatternQuery {
             }
         }
     }
+    // Method to get patterns in a specific slot
+    public List<Pattern> getPatternsInSlot(int slotIndex) {
+        return patternSlots[slotIndex];
+    }
 
     
 } 
