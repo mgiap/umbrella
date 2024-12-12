@@ -87,6 +87,10 @@ public class Player {
         return scoreBoard;
     }
 
+    public PatternQuery getPatternQuery() {
+        return patternQuery;
+    }
+
     // Method to add umbrella from Left Board
     public void addFromLeft(String umbrella, int row) {
         HashMap<String, Integer> sourceCounts = leftBoard.getColorCount();
@@ -189,5 +193,24 @@ public class Player {
 
         // Update the target board
         targetCounts.put(removedUmbrella, targetCounts.get(removedUmbrella) + 1);
+    }
+    // Check first pattern in all slot
+    public List<String> checkPattern() {
+        List<String> results = new ArrayList<>();
+        String[][] boardData = board.getBoard();
+
+        for (int slot = 0; slot < 4; slot++) {
+            if (!patternQuery.getPatternsInSlot(slot).isEmpty()) {
+                Pattern pattern = patternQuery.getPatternsInSlot(slot).get(0);
+                int[][] positions = pattern.getPositions();
+                
+                if(boardData[positions[0][0]][positions[0][1]] == boardData[positions[1][0]][positions[1][1]] &&
+                    boardData[positions[1][0]][positions[1][1]] == boardData[positions[2][0]][positions[2][1]] &&
+                    boardData[positions[2][0]][positions[2][1]] == boardData[positions[3][0]][positions[3][1]]) {
+                        results.add(boardData[positions[0][0]][positions[0][1]]);
+                }
+            }
+        }
+        return results;
     }
 }
