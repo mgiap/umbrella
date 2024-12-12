@@ -91,6 +91,10 @@ public class Player {
         return patternQuery;
     }
 
+    public void displayPatternQuery(){
+        patternQuery.printFirstPatternsInSlots();
+    }
+
     // Method to add umbrella from Left Board
     public void addFromLeft(String umbrella, int row) {
         HashMap<String, Integer> sourceCounts = leftBoard.getColorCount();
