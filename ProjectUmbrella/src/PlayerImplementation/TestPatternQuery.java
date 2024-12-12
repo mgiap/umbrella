@@ -3,16 +3,13 @@ package PlayerImplementation;
 import BoardImplementation.Board;
 import BoardImplementation.BoardStyle;
 import java.util.List;
+import java.util.Map;
 
 public class TestPatternQuery {
     public static void main(String[] args) {
-        // Player player = new Player();
-        // System.out.println("Displaying all patterns in all slots:");
-        // player.getPatternQuery().displayAllPatterns();
         testCheckPattern();
-
-        
     }
+
     private static void testCheckPattern() {
         // Setup
         Board board = new Board(BoardStyle.STYLE1); // Assuming STYLE1 is a valid board style
@@ -32,24 +29,25 @@ public class TestPatternQuery {
         // {"B", "G", "Y", "R"}
         // Act
         player.displayPatternQuery();
-        List<String> results = player.checkPattern();
+        Map<Integer, String> results = player.checkPattern();
 
         // Assert
-        if (results.contains("R")) {
-            System.out.println("Test Passed: R color detected.");
+        for (Map.Entry<Integer, String> entry : results.entrySet()) {
+            if ("R".equals(entry.getValue())) {
+                System.out.println("Test Passed: R color detected on slot " + entry.getKey());
+            }
+            if ("B".equals(entry.getValue())) {
+                System.out.println("Test Passed: B color detected on slot " + entry.getKey());
+            }
+            if ("G".equals(entry.getValue())) {
+                System.out.println("Test Passed: G color detected on slot " + entry.getKey());
+            }
+            if ("Y".equals(entry.getValue())) {
+                System.out.println("Test Passed: Y color detected on slot " + entry.getKey());
+            }
         }
-        if (results.contains("B")) {
-            System.out.println("Test Passed: B color detected.");
-        }
-        if (results.contains("G")) {
-            System.out.println("Test Passed: G color detected.");
-        }if (results.contains("Y")) {
-            System.out.println("Test Passed: Y color detected.");
-        } 
         if (results.isEmpty()) {
             System.out.println("Test Failed: Correct color not detected.");
         }
     }
-}
-
 }
