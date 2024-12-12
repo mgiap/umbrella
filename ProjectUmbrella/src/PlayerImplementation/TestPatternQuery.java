@@ -1,5 +1,9 @@
 package PlayerImplementation;
 
+import BoardImplementation.Board;
+import BoardImplementation.BoardStyle;
+import java.util.List;
+
 public class TestPatternQuery {
     public static void main(String[] args) {
         // Player player = new Player();
