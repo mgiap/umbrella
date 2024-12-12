@@ -199,19 +199,21 @@ public class Player {
         targetCounts.put(removedUmbrella, targetCounts.get(removedUmbrella) + 1);
     }
     // Check first pattern in all slot
-    public List<String> checkPattern() {
-        List<String> results = new ArrayList<>();
-        String[][] boardData = board.getBoard();
+    public Map<Integer, String> checkPattern() {
+        Map<Integer, String> results = new HashMap<>();
+        String[][] boardData = board.getBoard(); // Assuming boardData does not change per slot
 
         for (int slot = 0; slot < 4; slot++) {
             if (!patternQuery.getPatternsInSlot(slot).isEmpty()) {
                 Pattern pattern = patternQuery.getPatternsInSlot(slot).get(0);
                 int[][] positions = pattern.getPositions();
-                
-                if(boardData[positions[0][0]][positions[0][1]] == boardData[positions[1][0]][positions[1][1]] &&
-                    boardData[positions[1][0]][positions[1][1]] == boardData[positions[2][0]][positions[2][1]] &&
-                    boardData[positions[2][0]][positions[2][1]] == boardData[positions[3][0]][positions[3][1]]) {
-                        results.add(boardData[positions[0][0]][positions[0][1]]);
+
+                // Check if all positions have the same color using your logic
+                if (boardData[positions[0][0]][positions[0][1]].equals(boardData[positions[1][0]][positions[1][1]]) &&
+                    boardData[positions[1][0]][positions[1][1]].equals(boardData[positions[2][0]][positions[2][1]]) &&
+                    boardData[positions[2][0]][positions[2][1]].equals(boardData[positions[3][0]][positions[3][1]])) {
+                    // Map the slot number to the color
+                    results.put(slot, boardData[positions[0][0]][positions[0][1]]);
                 }
             }
         }
