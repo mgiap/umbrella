@@ -253,9 +253,8 @@ public class Player {
         // Final scores = total scores - bottom remaining tokens
     	scores -= bottomBoardCount;
     }
-    public Pattern tokenBoardPutting(HashMap<Integer, String> results){
+    public Pattern chooseTokenToPut(HashMap<Integer, String> results){
         Scanner scanner= new Scanner(System.in);
-       
        
         for (int slot : results.keySet()) {
             System.out.println("Slot: " + (slot + 1) + " has a pattern with color: " + results.get(slot));
@@ -292,7 +291,8 @@ public class Player {
                 break;
             }
         }
-
+        
+        Game.setToken(Game.getToken() - 1);;
         Pattern pattern = this.getPatternQuery().removePattern(slot);
         scanner.close();
         return pattern;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-	private static int token;
+	private static int token = 20;
     private static List<Player> players;
     private static SideBoard[] sideBoards = new SideBoard[4];
     
@@ -53,5 +53,9 @@ public class Game {
     
     public static int getToken() {
     	return token;
+    }
+    
+    public static void setToken(int newToken) {
+    	token = newToken;
     }
 }
