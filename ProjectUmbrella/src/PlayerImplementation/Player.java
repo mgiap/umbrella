@@ -6,6 +6,7 @@ import GameImplementation.Game;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player {
     private String name;
@@ -254,14 +255,24 @@ public class Player {
     }
     public void tokenBoardPutting(){
         Scanner scanner= new Scanner(System.in);
-        Pattern pattern = new Pattern(new int[][]{{0, 1}, {1, 2}, {2, 3}, {3, 0}, {0, 0}});
-        this.getPatternQuery().addPattern(0, pattern); // Add pattern to slot 0
-        Pattern pattern1 = new Pattern(new int[][]{{0, 2}, {1, 3}, {2, 0}, {3, 1}, {0, 0}});
-        this.getPatternQuery().addPattern(1, pattern1); 
+       
         HashMap<Integer, String> results = this.checkPattern();
         
-        Map.Entry<Integer, String> Slot = results.entrySet().iterator().next();
-        String color = Slot.getValue();
+        if (results.isEmpty()) {
+            System.out.println("No patterns found.");
+            scanner.close();
+            return;
+        }
+
+        for (int slot : results.keySet()) {
+            System.out.println("Slot: " + (slot + 1) + " has a pattern with color: " + results.get(slot));
+        }
+
+        // Ask the player to choose a color
+        System.out.println("Enter the color of the pattern you want to take:");
+        String color = scanner.next();
+        System.out.println("Enter the slot number (1-based index):");
+        int slot = scanner.nextInt() - 1; // Convert to 0-based index
         
         System.out.println("Checking for positions with color: " + color);
         for (int i = 0; i < 4; i++) {
@@ -269,6 +280,7 @@ public class Player {
             if (sublist == null || sublist.isEmpty()) {
                 continue; // Skip null or empty sublists
             }
+            
             for (int j = 0; j < sublist.size(); j++) {
                 if (sublist.get(j).equals(color)) {
                     System.out.println("Position found in combo: " + (i + 1) + " at index: " + (j + 1));
@@ -280,21 +292,15 @@ public class Player {
         System.out.println("Enter the combo number you want to take (1-based index):");
         int playerComboChoice = scanner.nextInt() - 1; // Convert to 0-based index
 
-        System.out.println("Enter the position within the combo (1-based index):");
-        int playerPositionChoice = scanner.nextInt() - 1; // Convert to 0-based index
-
         // Replace the chosen position with "T"
-        if (playerComboChoice >= 0 && playerComboChoice < 4) {
-            List<String> chosenCombo = scoreBoard.getScoreBoard().get(playerComboChoice);
-            if (chosenCombo != null && playerPositionChoice >= 0 && playerPositionChoice < chosenCombo.size()) {
-                chosenCombo.set(playerPositionChoice, "T");
-                System.out.println("Token placed successfully.");
-            } else {
-                System.out.println("Invalid position choice.");
+        for (String token : this.getScoreBoard().getScoreBoard().get(playerComboChoice)) {
+            if (token.equals(color)) {
+                this.getScoreBoard().getScoreBoard().get(playerComboChoice).set(this.getScoreBoard().getScoreBoard().get(playerComboChoice).indexOf(token), "T");
+                break;
             }
-        } else {
-            System.out.println("Invalid combo choice.");
         }
+
+        this.getPatternQuery().removePattern(slot);
         scanner.close();
     } 
 }
