@@ -10,24 +10,56 @@ public class Generator {
 
     public static List<List<String>> generateRandomPermutationsArray() {
         List<List<String>> permutations = new ArrayList<>();
+        List<String> usedColors = new ArrayList<>();
 
         // Generate 2 random permutations of 2 colors
         for (int i = 0; i < 2; i++) {
             List<String> perm2 = generateRandomPermutation(2);
             permutations.add(perm2);
+            usedColors.addAll(perm2);
         }
 
         // Generate 2 random permutations of 3 colors
         for (int i = 0; i < 2; i++) {
             List<String> perm3 = generateRandomPermutation(3);
             permutations.add(perm3);
+            usedColors.addAll(perm3);
         }
+
+        // Ensure all colors are used at least once
+        ensureAllColorsUsed(permutations, usedColors);
 
         // Shuffle the list to randomize the order of permutations
         Collections.shuffle(permutations);
 
         return permutations;
     }
+
+    private static void ensureAllColorsUsed(List<List<String>> permutations, List<String> usedColors) {
+        for (String color : colors) {
+            if (!usedColors.contains(color)) {
+                // Find a permutation to replace
+                List<String> replacementPerm = generateReplacementPermutation(permutations, color);
+                if (replacementPerm != null) {
+                    permutations.set(permutations.size() - 1, replacementPerm); // Replace last permutation
+                }
+            }
+        }
+    }
+
+    private static List<String> generateReplacementPermutation(List<List<String>> permutations, String missingColor) {
+        // Find a permutation to replace or adjust that does not already include the missing color
+        for (List<String> perm : permutations) {
+            if (!perm.contains(missingColor)) {
+                // Replace an element in the permutation with the missing color
+                List<String> replacement = new ArrayList<>(perm);
+                replacement.set(0, missingColor); // Replace the first element for simplicity
+                return replacement;
+            }
+        }
+        return null;
+    }
+
 
     public static List<String> generateRandomPermutation(int size) {
         // List to store the permutation
@@ -68,14 +100,5 @@ public class Generator {
             generatePermutationsHelper(colors, start + 1, result);
             Collections.swap(colors, start, i);  // Swap back to restore original order
         }
-    }
-
-    // Method to get the size of each permutation
-    public static List<Integer> getPermutationSizes(List<List<String>> permutations) {
-        List<Integer> sizes = new ArrayList<>();
-        for (List<String> permutation : permutations) {
-            sizes.add(permutation.size());
-        }
-        return sizes;
     }
 }
