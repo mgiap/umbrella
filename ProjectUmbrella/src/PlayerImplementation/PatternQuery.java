@@ -4,6 +4,7 @@ import PlayerImplementation.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PatternQuery {
     private List<Pattern>[] patternSlots;  // Array of pattern lists
@@ -15,16 +16,16 @@ public class PatternQuery {
         for (int i = 0; i < SLOT_COUNT; i++) {
             patternSlots[i] = new ArrayList<>();
         }
-        Pattern pattern1 = new Pattern(PatternGenerator.generateNewPattern());
-        Pattern pattern2 = new Pattern(PatternGenerator.generateNewPattern());
-        Pattern pattern3 = new Pattern(PatternGenerator.generateNewPattern());
-        Pattern pattern4 = new Pattern(PatternGenerator.generateNewPattern());
-        Pattern pattern12 = new Pattern(PatternGenerator.generateNewPattern());
-        this.addPattern(0, pattern1);
-        this.addPattern(0, pattern12);
-        this.addPattern(1, pattern2.rotatePattern());
-        this.addPattern(2, pattern3.rotatePattern().rotatePattern());
-        this.addPattern(3, pattern4.rotatePattern().rotatePattern().rotatePattern());   
+        // Pattern pattern1 = new Pattern(PatternGenerator.generateNewPattern());
+        // Pattern pattern2 = new Pattern(PatternGenerator.generateNewPattern());
+        // Pattern pattern3 = new Pattern(PatternGenerator.generateNewPattern());
+        // Pattern pattern4 = new Pattern(PatternGenerator.generateNewPattern());
+        // Pattern pattern12 = new Pattern(PatternGenerator.generateNewPattern());
+        // this.addPattern(0, pattern1);
+        // this.addPattern(0, pattern12);
+        // this.addPattern(1, pattern2.rotatePattern());
+        // this.addPattern(2, pattern3.rotatePattern().rotatePattern());
+        // this.addPattern(3, pattern4.rotatePattern().rotatePattern().rotatePattern());   
     }
 
     
@@ -118,10 +119,39 @@ public class PatternQuery {
             }
         }
     }
+
     // Method to get patterns in a specific slot
     public List<Pattern> getPatternsInSlot(int slotIndex) {
         return patternSlots[slotIndex];
     }
+
+    public void addPattern(Pattern pattern) {
+        for (int slot = 0; slot < SLOT_COUNT; slot++) {
+            if (patternSlots[slot].isEmpty()) {
+                patternSlots[slot].add(pattern);
+                System.out.println("Pattern added to slot " + slot);
+                return;
+            }
+        }
+        
+        System.out.println("Choose your pattern slot");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        patternSlots[choice].add(pattern);
+        scanner.close();
+        return;
+    }
+
+    public Pattern removePattern(int removePosition) {
+        if (removePosition >= 0 && removePosition < 4) {
+            List<Pattern> patterns = patternSlots[removePosition];
+            if (!patterns.isEmpty()) {
+                return patterns.remove(0); // Remove and return the first pattern
+            }
+        }
+        return null; // Return null if no pattern is found
+    }
+
 
     
 } 
