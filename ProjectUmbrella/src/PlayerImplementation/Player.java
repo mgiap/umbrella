@@ -277,6 +277,11 @@ public class Player {
                 if (sublist.get(j).equals(color)) {
                     System.out.println("Position found in combo: " + (i + 1) + " at index: " + (j + 1));
                 }
+                for (String token : this.getScoreBoard().getScoreBoard().get(playerComboChoice)) {
+                     if (token.equals(color)) {
+                this.getScoreBoard().getScoreBoard().get(playerComboChoice).set(this.getScoreBoard().getScoreBoard().get(playerComboChoice).indexOf(token), "T");
+                break;
+                }
             }
         }
 
@@ -285,12 +290,7 @@ public class Player {
         int playerComboChoice = scanner.nextInt() - 1; // Convert to 0-based index
 
         // Replace the chosen position with "T"
-        for (String token : this.getScoreBoard().getScoreBoard().get(playerComboChoice)) {
-            if (token.equals(color)) {
-                this.getScoreBoard().getScoreBoard().get(playerComboChoice).set(this.getScoreBoard().getScoreBoard().get(playerComboChoice).indexOf(token), "T");
-                break;
-            }
-        }
+        
         
         Game.setToken(Game.getToken() - 1);;
         Pattern pattern = this.getPatternQuery().removePattern(slot);
