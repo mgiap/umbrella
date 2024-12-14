@@ -265,7 +265,7 @@ public class Player {
         String color = scanner.next();
         System.out.println("Enter the slot number (1-based index):");
         int slot = scanner.nextInt() - 1; // Convert to 0-based index
-        
+        boolean colorFound = false;
         System.out.println("Checking for positions with color: " + color);
         for (int i = 0; i < 4; i++) {
             List<String> sublist = scoreBoard.getScoreBoard().get(i); // Get the sublist
@@ -276,21 +276,26 @@ public class Player {
             for (int j = 0; j < sublist.size(); j++) {
                 if (sublist.get(j).equals(color)) {
                     System.out.println("Position found in combo: " + (i + 1) + " at index: " + (j + 1));
+                    colorFound = true; // Mark that the color exists
                 }
-                for (String token : this.getScoreBoard().getScoreBoard().get(playerComboChoice)) {
-                     if (token.equals(color)) {
-                this.getScoreBoard().getScoreBoard().get(playerComboChoice).set(this.getScoreBoard().getScoreBoard().get(playerComboChoice).indexOf(token), "T");
-                break;
-                }
-            }
         }
+        // If color is not found, terminate the method
+        if (!colorFound) {
+        System.out.println("The color " + color + " is no longer available in the scoreboard.");
+        return null;
+    }
 
         // Ask the player to make a choice
         System.out.println("Enter the combo number you want to take (1-based index):");
         int playerComboChoice = scanner.nextInt() - 1; // Convert to 0-based index
 
         // Replace the chosen position with "T"
-        
+        for (String token : this.getScoreBoard().getScoreBoard().get(playerComboChoice)) {
+                     if (token.equals(color)) {
+                this.getScoreBoard().getScoreBoard().get(playerComboChoice).set(this.getScoreBoard().getScoreBoard().get(playerComboChoice).indexOf(token), "T");
+                break;
+                }
+            }
         
         Game.setToken(Game.getToken() - 1);;
         Pattern pattern = this.getPatternQuery().removePattern(slot);
