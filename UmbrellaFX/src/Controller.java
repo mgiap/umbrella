@@ -48,9 +48,10 @@ public class Controller {
     private VBox selectedToken;
     private String selectedSide;
 
+    Player player1 = new Player("Giap", 2);
+
     @FXML
     void initialize() {
-        Player player1 = new Player("Giap", 2);
 
         // Set the board
         setBoard(player1.getBoard().getBoard());
@@ -70,18 +71,29 @@ public class Controller {
         Map<String, Integer> bottomTokens = player.getBottomBoard().getColorCount();
         Map<String, Integer> leftTokens = player.getLeftBoard().getColorCount();
         Map<String, Integer> rightTokens = player.getRightBoard().getColorCount();
-
-        initializeTokenBoard(topTokens, topRedLabel, topBlueLabel, topGreenLabel, topYellowLabel);
-        initializeTokenBoard(bottomTokens, bottomRedLabel, bottomBlueLabel, bottomGreenLabel, bottomYellowLabel);
-        initializeTokenBoard(leftTokens, leftRedLabel, leftBlueLabel, leftGreenLabel, leftYellowLabel);
-        initializeTokenBoard(rightTokens, rightRedLabel, rightBlueLabel, rightGreenLabel, rightYellowLabel);
+    
+        initializeTokenBoard(topTokens, topRedToken, topRedLabel, topBlueToken, topBlueLabel, topGreenToken, topGreenLabel, topYellowToken, topYellowLabel);
+        initializeTokenBoard(bottomTokens, bottomRedToken, bottomRedLabel, bottomBlueToken, bottomBlueLabel, bottomGreenToken, bottomGreenLabel, bottomYellowToken, bottomYellowLabel);
+        initializeTokenBoard(leftTokens, leftRedToken, leftRedLabel, leftBlueToken, leftBlueLabel, leftGreenToken, leftGreenLabel, leftYellowToken, leftYellowLabel);
+        initializeTokenBoard(rightTokens, rightRedToken, rightRedLabel, rightBlueToken, rightBlueLabel, rightGreenToken, rightGreenLabel, rightYellowToken, rightYellowLabel);
     }
-
-    private void initializeTokenBoard(Map<String, Integer> tokens, Label redLabel, Label blueLabel, Label greenLabel, Label yellowLabel) {
-        redLabel.setText(String.valueOf(tokens.getOrDefault("R", 0)));
-        blueLabel.setText(String.valueOf(tokens.getOrDefault("B", 0)));
-        greenLabel.setText(String.valueOf(tokens.getOrDefault("G", 0)));
-        yellowLabel.setText(String.valueOf(tokens.getOrDefault("Y", 0)));
+    
+    private void initializeTokenBoard(Map<String, Integer> tokens, VBox redToken, Label redLabel, VBox blueToken, Label blueLabel, VBox greenToken, Label greenLabel, VBox yellowToken, Label yellowLabel) {
+        setTokenQuantity(tokens.getOrDefault("R", 0), redToken, redLabel);
+        setTokenQuantity(tokens.getOrDefault("B", 0), blueToken, blueLabel);
+        setTokenQuantity(tokens.getOrDefault("G", 0), greenToken, greenLabel);
+        setTokenQuantity(tokens.getOrDefault("Y", 0), yellowToken, yellowLabel);
+    }
+    
+    private void setTokenQuantity(int quantity, VBox token, Label label) {
+        if (quantity > 0) {
+            label.setText(String.valueOf(quantity));
+        } else {
+            if (token.getParent() instanceof Pane) {
+                Pane parent = (Pane) token.getParent();
+                parent.getChildren().remove(token);
+            }
+        }
     }
 
     private void initializeScoreboard(List<List<String>> scoreboard) {
@@ -153,15 +165,19 @@ public class Controller {
         switch (selectedSide) {
             case "top":
                 pushTop(index);
+                player1.addFromTop(convertColorToString(selectedColor), index + 1);
                 break;
             case "left":
                 pushLeft(index);
+                player1.addFromLeft(convertColorToString(selectedColor), index + 1);
                 break;
             case "right":
                 pushRight(index);
+                player1.addFromRight(convertColorToString(selectedColor), index + 1);
                 break;
             case "bottom":
                 pushBottom(index);
+                player1.addFromBottom(convertColorToString(selectedColor), index + 1);
                 break;
             default:
                 System.out.println("Invalid side");
@@ -169,6 +185,8 @@ public class Controller {
         }
 
         reduceTokenQuantity(selectedToken);
+
+        player1.getBoard().printBoard();
     }
 
     private void pushLeft(int row) {
@@ -274,6 +292,20 @@ public class Controller {
                 return Color.YELLOW;
             default:
                 return Color.BLACK; // Fallback color
+        }
+    }
+
+    private String convertColorToString(Color color) {
+        if (color.equals(Color.RED)) {
+            return "R";
+        } else if (color.equals(Color.BLUE)) {
+            return "B";
+        } else if (color.equals(Color.GREEN)) {
+            return "G";
+        } else if (color.equals(Color.YELLOW)) {
+            return "Y";
+        } else {
+            return "";
         }
     }
 }
