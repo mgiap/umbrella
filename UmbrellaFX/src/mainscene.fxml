@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,9 +9,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <GridPane prefHeight="100.0">
+      <GridPane alignment="CENTER" prefHeight="100.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,8 +22,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <GridPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <GridPane alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,14 +34,16 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Circle fx:id="token01" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Circle fx:id="token00" fill="RED" radius="20.0" styleClass="circle" GridPane.rowIndex="1" />
-                  <Circle fx:id="token02" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label fx:id="score0" text="+5" GridPane.columnIndex="1" />
+                  <Circle fx:id="token01" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token00" fill="RED" radius="20.0" styleClass="circle" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token02" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label fx:id="score0" text="+5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
             <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1">
                <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -52,15 +53,19 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Circle fx:id="token11" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Circle fx:id="token10" fill="RED" radius="20.0" styleClass="circle" GridPane.rowIndex="1" />
-                  <Circle fx:id="token12" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label fx:id="score1" text="+5" GridPane.columnIndex="1" />
-                  <Line endY="80.0" GridPane.rowIndex="1" />
+                  <Circle fx:id="token11" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token10" fill="RED" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token12" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label fx:id="score1" text="+5" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Line endY="80.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <GridPane layoutX="160.0" layoutY="10.0" GridPane.columnIndex="2">
                <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,15 +75,17 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Circle fx:id="token21" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Circle fx:id="token20" fill="RED" radius="20.0" styleClass="circle" GridPane.rowIndex="1" />
-                  <Circle fx:id="token22" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label fx:id="score2" text="+5" GridPane.columnIndex="1" />
-                  <Line endY="80.0" GridPane.rowIndex="1" />
+                  <Circle fx:id="token21" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token20" fill="RED" radius="20.0" styleClass="circle" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token22" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label fx:id="score2" text="+5" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Line endY="80.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="3">
+            <GridPane layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="178.0" GridPane.columnIndex="3">
                <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -88,28 +95,32 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Circle fx:id="token31" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Circle fx:id="token30" fill="RED" radius="20.0" styleClass="circle" GridPane.rowIndex="1" />
-                  <Circle fx:id="token32" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label fx:id="score3" text="+5" GridPane.columnIndex="1" />
-                  <Line endY="80.0" GridPane.rowIndex="1" />
+                  <Circle fx:id="token31" fill="BLUE" radius="20.0" styleClass="circle" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token30" fill="RED" radius="20.0" styleClass="circle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Circle fx:id="token32" fill="GREEN" radius="20.0" styleClass="circle" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label fx:id="score3" text="+5" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Line endY="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>
       </GridPane>
-      <GridPane maxHeight="700.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@styles.css">
+      <GridPane maxHeight="700.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" stylesheets="@styles.css">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="519.2000305175782" minWidth="10.0" prefWidth="400.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="641.5999618530274" minHeight="10.0" prefHeight="400.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="400.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane alignment="CENTER" maxHeight="400.0" maxWidth="400.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="100.0" />
@@ -141,7 +152,7 @@
                   <Circle fx:id="cir33" fill="RED" radius="46.0" stroke="BLACK" strokeType="INSIDE" styleClass="circle" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <GridPane GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -152,25 +163,25 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox fx:id="topRedToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="0">
+                  <VBox fx:id="topRedToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <children>
                         <Circle fill="RED" radius="20.0" styleClass="circle" />
                         <Label fx:id="topRedLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="topBlueToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="1">
+                  <VBox fx:id="topBlueToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="1">
                      <children>
                         <Circle fill="BLUE" radius="20.0" styleClass="circle" />
                         <Label fx:id="topBlueLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="topGreenToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="2">
+                  <VBox fx:id="topGreenToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="2">
                      <children>
                         <Circle fill="GREEN" radius="20.0" styleClass="circle" />
                         <Label fx:id="topGreenLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="topYellowToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="3">
+                  <VBox fx:id="topYellowToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="3">
                      <children>
                         <Circle fill="YELLOW" radius="20.0" styleClass="circle" />
                         <Label fx:id="topYellowLabel" text="0" />
@@ -178,7 +189,7 @@
                   </VBox>
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <GridPane GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
@@ -189,25 +200,25 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox fx:id="leftRedToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="0">
+                  <VBox fx:id="leftRedToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="0">
                      <children>
                         <Circle fill="RED" radius="20.0" styleClass="circle" />
                         <Label fx:id="leftRedLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="leftBlueToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="1">
+                  <VBox fx:id="leftBlueToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="1">
                      <children>
                         <Circle fill="BLUE" radius="20.0" styleClass="circle" />
                         <Label fx:id="leftBlueLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="leftGreenToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="2">
+                  <VBox fx:id="leftGreenToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="2">
                      <children>
                         <Circle fill="GREEN" radius="20.0" styleClass="circle" />
                         <Label fx:id="leftGreenLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="leftYellowToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="3">
+                  <VBox fx:id="leftYellowToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="3">
                      <children>
                         <Circle fill="YELLOW" radius="20.0" styleClass="circle" />
                         <Label fx:id="leftYellowLabel" text="0" />
@@ -215,7 +226,7 @@
                   </VBox>
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <GridPane GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
@@ -226,25 +237,25 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox fx:id="rightRedToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="0">
+                  <VBox fx:id="rightRedToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="0">
                      <children>
                         <Circle fill="RED" radius="20.0" styleClass="circle" />
                         <Label fx:id="rightRedLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="rightBlueToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="1">
+                  <VBox fx:id="rightBlueToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="1">
                      <children>
                         <Circle fill="BLUE" radius="20.0" styleClass="circle" />
                         <Label fx:id="rightBlueLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="rightGreenToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="2">
+                  <VBox fx:id="rightGreenToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="2">
                      <children>
                         <Circle fill="GREEN" radius="20.0" styleClass="circle" />
                         <Label fx:id="rightGreenLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="rightYellowToken" onMouseClicked="#handleTokenClick" GridPane.rowIndex="3">
+                  <VBox fx:id="rightYellowToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.rowIndex="3">
                      <children>
                         <Circle fill="YELLOW" radius="20.0" styleClass="circle" />
                         <Label fx:id="rightYellowLabel" text="0" />
@@ -252,7 +263,7 @@
                   </VBox>
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <GridPane GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -263,25 +274,25 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox fx:id="bottomRedToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="0">
+                  <VBox fx:id="bottomRedToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="0">
                      <children>
                         <Circle fill="RED" radius="20.0" styleClass="circle" />
                         <Label fx:id="bottomRedLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="bottomBlueToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="1">
+                  <VBox fx:id="bottomBlueToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="1">
                      <children>
                         <Circle fill="BLUE" radius="20.0" styleClass="circle" />
                         <Label fx:id="bottomBlueLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="bottomGreenToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="2">
+                  <VBox fx:id="bottomGreenToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="2">
                      <children>
                         <Circle fill="GREEN" radius="20.0" styleClass="circle" />
                         <Label fx:id="bottomGreenLabel" text="0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="bottomYellowToken" onMouseClicked="#handleTokenClick" GridPane.columnIndex="3">
+                  <VBox fx:id="bottomYellowToken" alignment="CENTER" onMouseClicked="#handleTokenClick" GridPane.columnIndex="3">
                      <children>
                         <Circle fill="YELLOW" radius="20.0" styleClass="circle" />
                         <Label fx:id="bottomYellowLabel" text="0" />
@@ -289,8 +300,75 @@
                   </VBox>
                </children>
             </GridPane>
-            <ChoiceBox fx:id="rowColumnChoiceBox" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button onAction="#onConfirmPush" text="Confirm Push" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button onAction="#onConfirmPush" text="Confirm Push" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <GridPane GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="pushTop1" alignment="CENTER" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushTop2" alignment="CENTER" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" text="push" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushTop3" alignment="CENTER" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" text="push" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushTop4" alignment="CENTER" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" text="push" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="160.0" layoutY="110.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="pushBottom1" alignment="CENTER" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushBottom2" alignment="CENTER" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" text="push" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushBottom3" alignment="CENTER" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" text="push" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushBottom4" alignment="CENTER" layoutX="10.0" layoutY="22.0" mnemonicParsing="false" text="push" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="pushLeft1" alignment="CENTER" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushLeft2" alignment="CENTER" layoutX="10.0" layoutY="48.0" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushLeft3" alignment="CENTER" layoutX="10.0" layoutY="148.0" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushLeft4" alignment="CENTER" layoutX="10.0" layoutY="48.0" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="110.0" layoutY="160.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="pushRight1" alignment="CENTER" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushRight2" alignment="CENTER" layoutX="10.0" layoutY="48.0" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushRight3" alignment="CENTER" layoutX="10.0" layoutY="148.0" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button fx:id="pushRight4" alignment="CENTER" layoutX="10.0" layoutY="48.0" mnemonicParsing="false" text="push" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </children>
