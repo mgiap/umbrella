@@ -29,13 +29,21 @@ public class IntroController {
         instructionsAlert.setTitle("Game Instructions");
         instructionsAlert.setHeaderText("How to Play Umbrella Board Game");
         instructionsAlert.setContentText("""
-            1. Each player starts with tokens of different colors.
-            2. Push tokens into rows or columns to create patterns.
-            3. Aim to score points by aligning tokens in specific arrangements.
-            4. Use strategy to block your opponents and maximize your score.
-            5. The player with the highest score at the end wins!
-
-            Good luck and have fun!
+0.Objective:
+Collect 5 raindrop tokens and reach the center of the board before the timer runs out.
+1.Setup
+-Place your piece at the starting point.
+-Shuffle Raindrop Cards and scatter Raindrop Tokens on the board.
+-Set a timer (e.g., 20 minutes).
+2.How to Play
+-Roll the die and move your piece.
+-Collect tokens by landing on their spaces.
+-Draw a Raindrop Card after each turn and follow its effect.
+-Reach the center with 5 tokens before time runs out.
+3.Win/Lose
+-Win: Reach the center with 5 tokens before the timer ends.
+-Lose: Time runs out or you fail to collect enough tokens.
+-Stay dry and good luck! 🌧️
         """);
         instructionsAlert.showAndWait();
     }
