@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          alignment="CENTER" hgap="200" vgap="100" fx:controller="IntroController" stylesheets="@styles.css"
+          prefWidth="800" prefHeight="800">
+    <!-- Background Container -->
+    <VBox id="IntroBackground" alignment="CENTER" prefWidth="800" prefHeight="800">
+        <!-- Content Container -->
+        <GridPane alignment="CENTER" hgap="200" vgap="100">
+            <!-- Title -->
+            <Label text="Welcome to Umbrella!" 
+                   style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #ff6347; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 0, 0);" 
+                   GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="CENTER"/>
+            
+            <!-- Buttons Container -->
+            <VBox alignment="CENTER" spacing="20" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <Button text="Start Game" onAction="#onStartGameClicked" style="-fx-font-size: 30px;"/>
+                <Button text="How to Play" onAction="#onFullInstructionsClicked" style="-fx-font-size: 30px;"/>
+            </VBox>
+        </GridPane>
+    </VBox>
+</GridPane>
