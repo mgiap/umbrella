@@ -602,15 +602,13 @@ public class Controller {
 
             checkPatternAndEnableScoreboard();
 
-            
-            // Check if the game has ended
-            if (turn == 0) {
-                endGame();
-            }
-
             if (result.isEmpty()) {
                 isPatternCompleted = false;
                 placeDonut.setVisible(false);
+                // Check if the game has ended
+                if (turn == 0) {
+                    endGame();
+                }
             }
         }
     }
