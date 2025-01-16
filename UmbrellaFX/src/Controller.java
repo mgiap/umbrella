@@ -602,23 +602,18 @@ public class Controller {
             result.remove(slot);
 
             // Remove the pattern
-            Pattern pattern = player1.getPatternQuery().removePattern(slot);
-            if(pattern.isBlack()){
-                player1.getPatternQuery().removePattern(slot);
+            Pattern patternFront = player1.getPatternQuery().removePattern(slot);
+            if(patternFront.isBlack()){
+                // player1.getPatternQuery().removePattern(slot);
             }else{
-                if(player1.getPatternQuery().checkEmptySlot(slot)){
-                    loadPatterns();
+                loadPatterns();
+                Pattern patternBehind = player1.getPatternQuery().removePattern(slot);
+                if(player1.getPatternQuery().checkEmptySlot()){
+                    player1.getPatternQuery().addPattern(patternBehind);
                 }else{
-                    Pattern Temp = player1.getPatternQuery().removePattern(slot);
-                    if(player1.getPatternQuery().checkEmptySlot()){
-                        player1.getPatternQuery().addPatternToFirstSlot(slot, Temp);
-                        Pattern patternRemoved = player1.getPatternQuery().removePattern(slot);
-                        player1.getPatternQuery().addPattern(patternRemoved);
-                    }else{
-                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), _ -> selectSlot(slot)));
-                        timeline.setCycleCount(1); // Run only once
-                        timeline.play();
-                    }
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> selectSlot(slot, patternBehind)));
+                    timeline.setCycleCount(1); // Run only once
+                    timeline.play();
                 }
             }
             
@@ -719,7 +714,7 @@ public class Controller {
     }
 
     @FXML
-    public void selectSlot(int oldSlot) {
+    public void selectSlot(int oldSlot, Pattern patternBehind) {
         
     // Perform additional actions with the selected pattern if needed
     // player1.getPatternQuery().addPattern(patternRemoved);
@@ -734,9 +729,9 @@ public class Controller {
                 Image gridImage = createGridImage(points, pattern.isBlack());
                 ImageView imageView = new ImageView(gridImage);
 
-                imageView.setOnMouseEntered(_ -> highlightPattern(imageView));
-                imageView.setOnMouseExited(_ -> clearHighlight(imageView));
-                imageView.setOnMouseClicked(_ -> selectPattern(imageView, selected, oldSlot));
+                imageView.setOnMouseEntered(event -> highlightPattern(imageView));
+                imageView.setOnMouseExited(event -> clearHighlight(imageView));
+                imageView.setOnMouseClicked(event -> selectPattern(imageView, selected, patternBehind));
 
                 PatternQuerry.getChildren().add(imageView);
             } else {
@@ -759,7 +754,7 @@ private void clearHighlight(ImageView imageView) {
     imageView.setEffect(null);
 }
 
-private void selectPattern(ImageView selectedImageView, int slot, int oldSlot) {
+private void selectPattern(ImageView selectedImageView, int slot, Pattern patternBehind) {
     // Clear previous selection
     for (javafx.scene.Node node : PatternQuerry.getChildren()) {
         if (node instanceof ImageView) {
@@ -773,10 +768,9 @@ private void selectPattern(ImageView selectedImageView, int slot, int oldSlot) {
     dropShadow.setRadius(20);
     selectedImageView.setEffect(dropShadow);
 
-    Pattern patternRemoved = player1.getPatternQuery().removePattern(oldSlot);
     // Perform additional actions with the selected pattern if needed
     // player1.getPatternQuery().addPattern(patternRemoved);
-    player1.getPatternQuery().addPatternToFirstSlot(slot, patternRemoved);
+    player1.getPatternQuery().addPatternToFirstSlot(slot, patternBehind);
 
     loadPatterns();
     player1.getPatternQuery().displayAllPatterns();
