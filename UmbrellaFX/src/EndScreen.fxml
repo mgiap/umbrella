@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="EndBackground" alignment="CENTER" maxHeight="850.0" maxWidth="1300.0" prefHeight="850.0" prefWidth="1300.0" spacing="20" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EndScreenController">
+    <Label fx:id="congratulationsLabel" styleClass="pixelFontLabel" text="Congratulations!" />
+    <Label fx:id="scoreLabel" styleClass="pixelFontLabel1" text="Your Score: 0" />
+    <Button onAction="#onPlayAgainClicked" styleClass="pixelFontButton" text="Play Again" />
+   <Button mnemonicParsing="false" onAction="#onViewHighScoresClicked" styleClass="pixelFontButton" text="View High Scores" />
+</VBox>
