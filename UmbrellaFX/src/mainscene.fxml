@@ -642,6 +642,20 @@
                </children>
             </VBox>
             <Button fx:id="viewScoresButton" mnemonicParsing="false" onAction="#onViewScoresButtonClicked" prefHeight="30.0" prefWidth="98.0" styleClass="unselected-confirm-button" stylesheets="@styles.css" text="View Scores" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <VBox fx:id="placeDonut2" prefHeight="396.0" prefWidth="289.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <ImageView fitHeight="105.0" fitWidth="313.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@talkingbubble4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="291.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@kakashi.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </children>
