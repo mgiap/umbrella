@@ -73,9 +73,7 @@ public class Controller {
     @FXML
     private Button pushTop1, pushTop2, pushTop3, pushTop4;
     @FXML
-    private VBox placeDonut;
-    @FXML
-    private VBox placeDonut1;
+    private VBox placeDonut, placeDonut1, placeDonut2;
     @FXML
     private Button confirmButton;
     @FXML
@@ -91,6 +89,7 @@ public class Controller {
     private int selectedIndex = -1;
     private int turn = 20;
     boolean isPatternCompleted = false;
+    boolean isPatternSelected = false;
     HashMap<Integer, String> result = new HashMap<>();
 
     private Player player1;
@@ -373,6 +372,18 @@ public class Controller {
             return;
         }
 
+        if (isPatternSelected) {
+            placeDonut2.setVisible(true);
+
+            // Create a Timeline to hide the warning after 5 seconds
+            Timeline timeline = new Timeline(new KeyFrame(
+                Duration.seconds(5),
+                _ -> placeDonut2.setVisible(false)
+            ));
+            timeline.play();
+            return;
+        }
+
         resetPushButtonStyles();
         selectedIndex = -1;
 
@@ -611,7 +622,8 @@ public class Controller {
                 if(player1.getPatternQuery().checkEmptySlot()){
                     player1.getPatternQuery().addPattern(patternBehind);
                 }else{
-                    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> selectSlot(slot, patternBehind)));
+                    isPatternSelected = true;
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), _ -> selectSlot(slot, patternBehind)));
                     timeline.setCycleCount(1); // Run only once
                     timeline.play();
                 }
@@ -729,9 +741,9 @@ public class Controller {
                 Image gridImage = createGridImage(points, pattern.isBlack());
                 ImageView imageView = new ImageView(gridImage);
 
-                imageView.setOnMouseEntered(event -> highlightPattern(imageView));
-                imageView.setOnMouseExited(event -> clearHighlight(imageView));
-                imageView.setOnMouseClicked(event -> selectPattern(imageView, selected, patternBehind));
+                imageView.setOnMouseEntered(_ -> highlightPattern(imageView));
+                imageView.setOnMouseExited(_ -> clearHighlight(imageView));
+                imageView.setOnMouseClicked(_ -> selectPattern(imageView, selected, patternBehind));
 
                 PatternQuerry.getChildren().add(imageView);
             } else {
@@ -774,6 +786,8 @@ private void selectPattern(ImageView selectedImageView, int slot, Pattern patter
 
     loadPatterns();
     player1.getPatternQuery().displayAllPatterns();
+
+    isPatternSelected = false;
 }
 
     private Image createGridImage(int[][] points, boolean isBlack) {
@@ -933,5 +947,4 @@ private void selectPattern(ImageView selectedImageView, int slot, Pattern patter
         }
     }
 }
-
 
