@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -9,6 +10,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            // Load custom fonts
+            Font.loadFont(getClass().getResource("/fonts/PixelifySans-Regular.ttf").toExternalForm(), 16);
+            Font.loadFont(getClass().getResource("/fonts/PixelifySans-SemiBold.ttf").toExternalForm(), 16);
+            Font.loadFont(getClass().getResource("/fonts/RobotoMono-Regular.ttf").toExternalForm(), 16);
+
             // Load IntroScene
             FXMLLoader introLoader = new FXMLLoader(getClass().getResource("IntroScreen.fxml"));
             Parent introRoot = introLoader.load();
